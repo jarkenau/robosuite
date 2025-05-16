@@ -89,6 +89,7 @@ class Device(metaclass=abc.ABCMeta):
         active_arm = self.active_arm
 
         state = self.get_controller_state()
+        print(f"state: {state}")
         # Note: Devices output rotation with x and z flipped to account for robots starting with gripper facing down
         #       Also note that the outputted rotation is an absolute rotation, while outputted dpos is delta pos
         #       Raw delta rotations from neutral user input is captured in raw_drotation (roll, pitch, yaw)
