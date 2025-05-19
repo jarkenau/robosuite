@@ -39,21 +39,19 @@ env.viewer.add_keypress_callback(device.on_press)
 env.reset()
 
 while True:
-
-    env.reset()
+    obs = env.reset()
     env.render()
     device.start_control()
-    
-    while True:
+    done = False
+    while not done:
         input_ac_dict = device.input2action()
-        action_dict = deepcopy(input_ac_dict)
         if input_ac_dict is None:
             break
-        
+        action_dict = deepcopy(input_ac_dict)
         for arm in robot.arms:
             action_dict[arm] = input_ac_dict[f"{arm}_delta"]
         
         action_vector = robot.create_action_vector(action_dict)
 
-        env.step(action_vector)
+        obs, reward, done, info = env.step(action_vector)
         env.render()
