@@ -128,27 +128,27 @@ class Keyboard(Device):
                 self.pos[2] += self._pos_step * self.pos_sensitivity  # inc z
 
             # controls for moving orientation
-            elif key.char == "e":
+            elif key.char == "y":
                 drot = rotation_matrix(angle=0.1 * self.rot_sensitivity, direction=[1.0, 0.0, 0.0])[:3, :3]
                 self.rotation = self.rotation.dot(drot)  # rotates x
                 self.raw_drotation[1] -= 0.1 * self.rot_sensitivity
-            elif key.char == "r":
+            elif key.char == "o":
                 drot = rotation_matrix(angle=-0.1 * self.rot_sensitivity, direction=[1.0, 0.0, 0.0])[:3, :3]
                 self.rotation = self.rotation.dot(drot)  # rotates x
                 self.raw_drotation[1] += 0.1 * self.rot_sensitivity
-            elif key.char == "y":
+            elif key.char == "h":
                 drot = rotation_matrix(angle=0.1 * self.rot_sensitivity, direction=[0.0, 1.0, 0.0])[:3, :3]
                 self.rotation = self.rotation.dot(drot)  # rotates y
                 self.raw_drotation[0] += 0.1 * self.rot_sensitivity
-            elif key.char == "h":
+            elif key.char == "l":
                 drot = rotation_matrix(angle=-0.1 * self.rot_sensitivity, direction=[0.0, 1.0, 0.0])[:3, :3]
                 self.rotation = self.rotation.dot(drot)  # rotates y
                 self.raw_drotation[0] -= 0.1 * self.rot_sensitivity
-            elif key.char == "p":
+            elif key.char == "u":
                 drot = rotation_matrix(angle=0.1 * self.rot_sensitivity, direction=[0.0, 0.0, 1.0])[:3, :3]
                 self.rotation = self.rotation.dot(drot)  # rotates z
                 self.raw_drotation[2] += 0.1 * self.rot_sensitivity
-            elif key.char == "o":
+            elif key.char == "i":
                 drot = rotation_matrix(angle=-0.1 * self.rot_sensitivity, direction=[0.0, 0.0, 1.0])[:3, :3]
                 self.rotation = self.rotation.dot(drot)  # rotates z
                 self.raw_drotation[2] -= 0.1 * self.rot_sensitivity
