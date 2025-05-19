@@ -1,12 +1,18 @@
 import robosuite as suite
 from robosuite.devices import Keyboard
+import time
+import os
 from copy import deepcopy
+
+CONTROLER_CONFIG_PATH = os.path.join(os.path.dirname(__file__), "default_tiago.json")
+custom_tiago_controller_config = suite.load_composite_controller_config(CONTROLER_CONFIG_PATH)
 
 env = suite.make(
     "PickPlace",
     robots=["Tiago"],
     gripper_types=["Robotiq140Gripper"],
     has_renderer=True,
+    controller_configs=custom_tiago_controller_config,
     has_offscreen_renderer=False,
     use_camera_obs=False,
     render_camera=["agentview", "robot0_robotview"],
@@ -44,7 +50,6 @@ while True:
         if input_ac_dict is None:
             break
         
-        # set 
         for arm in robot.arms:
             action_dict[arm] = input_ac_dict[f"{arm}_delta"]
         

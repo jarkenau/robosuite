@@ -96,7 +96,6 @@ class Keyboard(Device):
             self.raw_drotation - self.last_drotation
         )  # create local variable to return, then reset internal drotation
         self.last_drotation = np.array(self.raw_drotation)
-        print(f"pos: {self.pos}, drotation: {raw_drotation}")
         return dict(
             dpos=dpos,
             rotation=self.rotation,
@@ -116,7 +115,6 @@ class Keyboard(Device):
         try:
             # controls for moving position
             if key == Key.up:
-                print("up")
                 self.pos[0] -= self._pos_step * self.pos_sensitivity  # dec x
             elif key == Key.down:
                 self.pos[0] += self._pos_step * self.pos_sensitivity  # inc x

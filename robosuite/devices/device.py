@@ -89,7 +89,6 @@ class Device(metaclass=abc.ABCMeta):
         active_arm = self.active_arm
 
         state = self.get_controller_state()
-        print(f"state: {state}")
         # Note: Devices output rotation with x and z flipped to account for robots starting with gripper facing down
         #       Also note that the outputted rotation is an absolute rotation, while outputted dpos is delta pos
         #       Raw delta rotations from neutral user input is captured in raw_drotation (roll, pitch, yaw)
@@ -152,7 +151,7 @@ class Device(metaclass=abc.ABCMeta):
                 torso_ac = np.zeros(1)
 
             ac_dict["base"] = base_ac
-            # ac_dict["torso"] = torso_ac
+            ac_dict["torso"] = torso_ac
             ac_dict["base_mode"] = np.array([1 if base_mode is True else -1])
         else:
             arm_norm_delta = np.concatenate([dpos, drotation])
