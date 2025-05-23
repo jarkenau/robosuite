@@ -95,7 +95,17 @@
         },
         "base": {
             "type": "JOINT_VELOCITY",
-            "interpolation": "null"
-        }
+            "input_type": "absolute",
+            "input_min": -1.0,
+            "input_max": 1.0,
+            "output_min": -1.0,
+            "output_max": 1.0,
+            "velocity_limits": [-1.0, 1.0],
+            "kp": 1.0,
+            "kv": 0.0,
+            "kd": 0.0,
+            "interpolation": null,
+            "ramp_ratio": 0.2
+        } 
     }
 }
